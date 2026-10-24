@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bjorn — drop</title>
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #0c0c0e; color: #e1e1e6; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+    .card { background: #16161a; border: 1px solid #242429; border-radius: 16px; padding: 28px; width: 100%; max-width: 440px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
+    p.sub { font-size: 13px; color: #82828c; margin-bottom: 24px; }
+    .box { background: #1c1c21; border: 1px solid #2b2b33; border-radius: 10px; padding: 12px 16px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; }
+    .box span { font-size: 13px; color: #a1a1aa; }
+    .code { font-family: monospace; font-size: 16px; font-weight: 700; color: #a78bfa; letter-spacing: 1px; }
+    .connect-row { display: flex; gap: 8px; margin-bottom: 24px; }
+    input[type="text"] { flex: 1; background: #1c1c21; border: 1px solid #2b2b33; border-radius: 10px; padding: 12px; color: #fff; font-size: 14px; outline: none; }
+    input[type="text"]:focus { border-color: #7c3aed; }
+    button { background: #7c3aed; color: #fff; border: none; border-radius: 10px; padding: 12px 18px; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    button:hover { background: #6d28d9; }
+    .dropzone { border: 2px dashed #2b2b33; border-radius: 12px; padding: 24px; text-align: center; cursor: pointer; transition: 0.2s; margin-bottom: 16px; }
+    .dropzone:hover { border-color: #7c3aed; background: #1a1a24; }
+    .dropzone span { font-size: 13px; color: #a1a1aa; display: block; }
+    textarea { width: 100%; background: #1c1c21; border: 1px solid #2b2b33; border-radius: 10px; padding: 12px; color: #fff; font-size: 13px; resize: none; height: 70px; margin-bottom: 10px; outline: none; }
+    #log { font-size: 12px; color: #9ca3af; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .log-item { background: #121215; padding: 10px; border-radius: 8px; border-left: 3px solid #7c3aed; word-break: break-all; }
+    .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 6px; background: #262630; color: #a1a1aa; margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>bjorn drop</h1>
+  <p class="sub">Encrypted P2P file, APK & text transfer</p>
+
+  <div class="box">
+    <span>Your Connection Key</span>
+    <div class="code" id="my-id">...</div>
+  </div>
+
+  <div class="connect-row">
+    <input type="text" id="target-id" placeholder="Enter remote key">
+    <button onclick="connectToPeer()">Connect</button>
+  </div>
+
+  <div id="status" class="badge">Waiting for connection...</div>
+
+  <div class="dropzone" onclick="document.getElementById('file-input').click()">
+    <input type="file" id="file-input" style="display:none" onchange="sendFile(this.files[0])">
+    <span>Click or Drop File / APK here</span>
+  </div>
+
+  <textarea id="text-msg" placeholder="Type text or clipboard snippet to send..."></textarea>
+  <button style="width:100%;" onclick="sendText()">Send Text Clip</button>
+
+  <div id="log"></div>
+</div>
+
+<script>
+  const peer = new Peer(Math.random().toString(36).substring(2, 8).toUpperCase());
+  let conn = null;
+
+  peer.on('open', id => {
+    document.getElementById('my-id').innerText = id;
+  });
+
+  peer.on('connection', c => {
+    conn = c;
+    setupConnection();
+  });
+
+  function connectToPeer() {
+    const target = document.getElementById('target-id').value.trim().toUpperCase();
+    if (!target) return alert('Enter a valid key');
+    conn = peer.connect(target);
+    setupConnection();
+  }
+
+  function setupConnection() {
+    conn.on('open', () => {
+      document.getElementById('status').innerText = 'Connected to ' + conn.peer;
+      document.getElementById('status').style.color = '#34d399';
+    });
+
+    conn.on('data', data => {
+      if (data.type === 'file') {
+        const blob = new Blob([data.file], { type: data.filetype });
+        const url = URL.createObjectURL(blob);
+        addLog(`Received file: <b>${data.filename}</b> <br><a href="${url}" download="${data.filename}" style="color:#a78bfa;">Download File</a>`);
+      } else if (data.type === 'text') {
+        addLog(`Received text: <span>${escapeHtml(data.text)}</span>`);
+      }
+    });
+  }
+
+  function sendFile(file) {
+    if (!conn || !conn.open) return alert('Connect to another device first!');
+    if (!file) return;
+    conn.send({
+      type: 'file',
+      file: file,
+      filename: file.name,
+      filetype: file.type
+    });
+    addLog(`Sent file: <b>${file.name}</b>`);
+  }
+
+  function sendText() {
+    if (!conn || !conn.open) return alert('Connect to another device first!');
+    const el = document.getElementById('text-msg');
+    const text = el.value.trim();
+    if (!text) return;
+    conn.send({ type: 'text', text: text });
+    addLog(`Sent text: <span>${escapeHtml(text)}</span>`);
+    el.value = '';
+  }
+
+  function addLog(html) {
+    const log = document.getElementById('log');
+    const item = document.createElement('div');
+    item.className = 'log-item';
+    item.innerHTML = html;
+    log.prepend(item);
+  }
+
+  function escapeHtml(t) {
+    return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+</script>
+
+</body>
+</html>
