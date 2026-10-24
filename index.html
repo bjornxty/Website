@@ -1,35 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>bjorn</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #031424;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      user-select: none;
-    }
-    .text {
-      color: #e6edf3;
-      font-size: 1.2rem;
-      letter-spacing: 0.35em;
-      text-transform: lowercase;
-      opacity: 0.85;
-      transition: opacity 0.4s ease, letter-spacing 0.4s ease;
-    }
-    .text:hover {
-      opacity: 1;
-      letter-spacing: 0.5em;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bjorn</title>
+<meta name="description" content="Bjorn's corner of the internet.">
+<meta name="theme-color" content="#050508">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Bjorn">
+<meta property="og:description" content="Bjorn's corner of the internet.">
+<meta property="og:url" content="https://bjornon.top">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23050508'/><circle cx='16' cy='16' r='5' fill='%23b9c2ff'/><circle cx='16' cy='16' r='10' fill='%237c5cff' fill-opacity='.25'/></svg>">
+
+<style>
+/* ===== DESIGN TOKENS (edit these to retheme) ===== */
+:root {
+  --void: #050508;
+  --ink: #f4f6ff;
+  --ink-dim: #d9ddf5;
+  --ink-faint: rgba(200, 205, 240, .38);
+  --violet: 124, 92, 255;
+  --cyan: 76, 201, 240;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ===== BASE ===== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--void);
+  overscroll-behavior: none;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  /* Very faint nebula tint behind the canvas; the base stays void black */
+  background:
+    radial-gradient(60% 50% at 18% 88%, rgba(var(--cyan), .055), transparent 70%),
+    radial-gradient(55% 45% at 86% 14%, rgba(var(--violet), .08), transparent 70%),
+    var(--void);
+}
+
+#sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+html.grabbing #sky { cursor: grabbing; }
+
+/* ===== NAME ===== */
+.stage {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.stage > .halo, .stage > .name { grid-area: 1 / 1; }
+
+.halo {
+  width: clamp(280px, 70vw, 720px);
+  aspect-ratio: 2 / 1;
+  background: radial-gradient(closest-side, rgba(var(--violet), .26), rgba(var(--cyan), .06) 60%, transparent 100%);
+  filter: blur(18px);
+  animation: breathe 7s ease-in-out infinite;
+}
+
+.name {
+  margin: 0;
+  padding-left: .16em; /* balances the trailing letter-spacing so the word is truly centered */
+  font-size: clamp(3.75rem, 17vw, 9.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: .16em;
+  color: var(--ink);
+  text-shadow:
+    0 0 18px rgba(150, 130, 255, .55),
+    0 0 60px rgba(100, 120, 255, .35),
+    0 0 120px rgba(var(--cyan), .2);
+  animation: emerge 2.4s cubic-bezier(.2, .7, .2, 1) backwards;
+}
+
+.hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% + clamp(2.8rem, 10.5vw, 6rem));
+  text-align: center;
+  font-size: .8rem;
+  letter-spacing: .04em;
+  color: var(--ink-faint);
+  transition: opacity 1.2s ease;
+  animation: fade 1.4s ease 2.6s backwards;
+}
+.hint.is-hidden { opacity: 0; }
+
+/* ===== DOCK ===== */
+.dock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 22px);
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .6rem;
+  padding: 0 .75rem;
+  animation: rise 1.2s cubic-bezier(.2, .7, .2, 1) 1.5s backwards;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 44px;
+  padding: 0 1.05rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .09);
+  background: rgba(16, 16, 30, .5);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  color: var(--ink-dim);
+  font: 500 .9rem/1 var(--font);
+  letter-spacing: .01em;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform .25s ease, border-color .25s ease, background .25s ease,
+              color .25s ease, box-shadow .25s ease;
+}
+.pill svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pill svg.fill { fill: currentColor; stroke: none; }
+
+@media (hover: hover) {
+  .pill:hover {
+    transform: translateY(-2px);
+    border-color: rgba(var(--violet), .5);
+    background: rgba(28, 26, 56, .62);
+    color: #fff;
+    box-shadow: 0 8px 30px -8px rgba(var(--violet), .55);
+  }
+}
+.pill:active { transform: scale(.97); }
+.pill:focus-visible { outline: 2px solid rgb(127, 220, 255); outline-offset: 3px; }
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .pill { background: rgba(16, 16, 30, .85); }
+}
+
+/* Copy button states */
+.pill .ico-check { display: none; }
+.pill.is-copied { border-color: rgba(var(--cyan), .6); color: #fff; }
+.pill.is-copied .ico-copy { display: none; }
+.pill.is-copied .ico-check { display: block; stroke: rgb(var(--cyan)); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ===== MOTION ===== */
+@keyframes emerge {
+  from { opacity: 0; filter: blur(14px); transform: scale(1.06); }
+}
+@keyframes fade { from { opacity: 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes breathe {
+  0%, 100% { opacity: .7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halo, .name, .hint, .dock { animation: none; }
+  .pill { transition: none; }
+}
+
+@media (max-width: 420px) {
+  .dock { gap: .5rem; }
+  .pill { padding: 0 .9rem; font-size: .85rem; }
+}
+</style>
 </head>
+
 <body>
-  <div class="text">bjorn</div>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<!-- ===== CONTENT: edit the name here ===== -->
+<main class="stage">
+  <div class="halo" aria-hidden="true"></div>
+  <h1 class="name">Bjorn</h1>
+  <p class="hint" id="hint">Drag to turn the sky</p>
+</main>
+
+<!-- ===== DOCK: edit links here ===== -->
+<nav class="dock" aria-label="Links">
+  <a class="pill" href="/share">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4 4 4M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+    <span>File drop</span>
+  </a>
+
+  <a class="pill" href="https://github.com/bjornxty" target="_blank" rel="noopener noreferrer">
+    <svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+    <span>GitHub</span>
+  </a>
+
+  <button class="pill" id="copy" type="button" aria-label="Copy Minecraft server address play.bjornon.top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 3.5 7v10L12 21.5 20.5 17V7L12 2.5ZM3.5 7 12 11.5 20.5 7M12 11.5v10"/></svg>
+    <span id="copy-label">play.bjornon.top</span>
+    <svg class="ico-copy" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5.5 15A1.5 1.5 0 0 1 4 13.5v-8A1.5 1.5 0 0 1 5.5 4h8A1.5 1.5 0 0 1 15 5.5"/></svg>
+    <svg class="ico-check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+  </button>
+</nav>
+
+<span class="sr-only" id="status" role="status" aria-live="polite"></span>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ===== SETTINGS (safe to tweak) ===== */
+  var CONFIG = {
+    density: 350,        // lower = more stars (pixels per star)
+    minStars: 600,
+    maxStars: 2400,
+    sensitivity: 0.0042, // drag strength (radians per pixel)
+    idleSpin: 0.025,     // slow drift when untouched (radians per second)
+    friction: 1.6,       // how quickly the spin settles after release
+    parallax: 16         // mouse-hover shift in pixels (desktop only)
+  };
+  var SERVER_IP = 'play.bjornon.top';
+  var COLORS = ['rgb(232,236,255)', 'rgb(176,196,255)', 'rgb(196,170,255)', 'rgb(150,224,255)', 'rgb(255,226,190)'];
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canvas = document.getElementById('sky');
+  var ctx = canvas.getContext('2d');
+
+  var W = 0, H = 0, dpr = 1, S = 0, cx = 0, cy = 0;
+  var n = 0, nx, ny, nz, sz, alpha, tws, twp, ci, lx, ly;
+
+  var yaw = 0, pitch = 0, velYaw = 0, velPitch = 0;
+  var dragging = false, pid = null, lastX = 0, lastY = 0, accX = 0, accY = 0;
+  var gx = 0, gy = 0, glowA = 0;
+  var tx = 0, ty = 0, offX = 0, offY = 0;
+
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+
+  /* ===== STAR FIELD ===== */
+  function build(count) {
+    var list = [], i, r, c;
+    for (i = 0; i < count; i++) {
+      // Uniform point inside a unit ball
+      var u = Math.random() * 2 - 1;
+      var t = Math.random() * Math.PI * 2;
+      var rad = Math.cbrt(Math.random());
+      var s = Math.sqrt(1 - u * u);
+      r = Math.random();
+      c = r < .55 ? 0 : r < .75 ? 1 : r < .88 ? 2 : r < .96 ? 3 : 4;
+      list.push({
+        x: s * Math.cos(t) * rad, y: s * Math.sin(t) * rad, z: u * rad,
+        size: .5 + Math.pow(Math.random(), 3) * 1.9,
+        a: .35 + Math.random() * .65,
+        ts: .6 + Math.random() * 1.8,
+        tp: Math.random() * 6.283,
+        c: c
+      });
+    }
+    list.sort(function (a, b) { return a.c - b.c; }); // group by colour = fewer style changes
+    n = count;
+    nx = new Float32Array(n); ny = new Float32Array(n); nz = new Float32Array(n);
+    sz = new Float32Array(n); alpha = new Float32Array(n);
+    tws = new Float32Array(n); twp = new Float32Array(n);
+    ci = new Uint8Array(n); lx = new Float32Array(n); ly = new Float32Array(n);
+    for (i = 0; i < n; i++) {
+      var o = list[i];
+      nx[i] = o.x; ny[i] = o.y; nz[i] = o.z; sz[i] = o.size; alpha[i] = o.a;
+      tws[i] = o.ts; twp[i] = o.tp; ci[i] = o.c; lx[i] = NaN; ly[i] = NaN;
+    }
+  }
+
+  function resize() {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.lineCap = 'round';
+    S = Math.max(W, H) * .85;
+    cx = W / 2; cy = H / 2;
+    var want = clamp(Math.round(W * H / CONFIG.density), CONFIG.minStars, CONFIG.maxStars);
+    if (!n || Math.abs(want - n) / n > .3) build(want);
+  }
+
+  /* ===== INPUT (mouse, touch and pen via pointer events) ===== */
+  var hint = document.getElementById('hint');
+  var hintHidden = false;
+  function hideHint() {
+    if (hintHidden) return;
+    hintHidden = true;
+    hint.classList.add('is-hidden');
+  }
+
+  window.addEventListener('pointerdown', function (e) {
+    if (e.target.closest && e.target.closest('.dock')) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragging = true; pid = e.pointerId;
+    lastX = gx = e.clientX; lastY = gy = e.clientY;
+    accX = accY = 0;
+    hideHint();
+    document.documentElement.classList.add('grabbing');
+  });
+
+  window.addEventListener('pointermove', function (e) {
+    if (dragging && e.pointerId === pid) {
+      accX += e.clientX - lastX; accY += e.clientY - lastY;
+      lastX = gx = e.clientX; lastY = gy = e.clientY;
+    } else if (!dragging && e.pointerType === 'mouse' && !reduceMotion) {
+      tx = -(e.clientX / W - .5) * CONFIG.parallax * 2;
+      ty = -(e.clientY / H - .5) * CONFIG.parallax * 2;
+    }
+  });
+
+  function release(e) {
+    if (dragging && e.pointerId === pid) {
+      dragging = false; pid = null;
+      document.documentElement.classList.remove('grabbing');
+    }
+  }
+  window.addEventListener('pointerup', release);
+  window.addEventListener('pointercancel', release);
+  window.addEventListener('blur', function () {
+    dragging = false;
+    document.documentElement.classList.remove('grabbing');
+  });
+
+  /* ===== SIMULATION + RENDER ===== */
+  var last = performance.now();
+
+  function frame(now) {
+    var dt = clamp((now - last) / 1000, .001, .05);
+    last = now;
+
+    var idle = reduceMotion ? 0 : CONFIG.idleSpin;
+    if (dragging) {
+      var dyaw = accX * CONFIG.sensitivity, dpitch = accY * CONFIG.sensitivity;
+      accX = accY = 0;
+      yaw += dyaw; pitch += dpitch;
+      var f = 1 - Math.exp(-dt * 18);
+      velYaw += (clamp(dyaw / dt, -12, 12) - velYaw) * f;
+      velPitch += (clamp(dpitch / dt, -12, 12) - velPitch) * f;
+      glowA += (1 - glowA) * (1 - Math.exp(-dt * 10));
+    } else {
+      yaw += velYaw * dt; pitch += velPitch * dt;
+      velYaw += (idle - velYaw) * (1 - Math.exp(-dt * CONFIG.friction));
+      velPitch *= Math.exp(-dt * 2.4);
+      pitch -= pitch * (1 - Math.exp(-dt * .12));
+      glowA *= Math.exp(-dt * 5);
+    }
+    pitch = clamp(pitch, -1.35, 1.35);
+
+    var p = 1 - Math.exp(-dt * 4);
+    offX += (tx - offX) * p; offY += (ty - offY) * p;
+
+    draw(now / 1000);
+    requestAnimationFrame(frame);
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+
+    var cyw = Math.cos(yaw), syw = Math.sin(yaw);
+    var cp = Math.cos(pitch), sp = Math.sin(pitch);
+    var ox = cx + offX, oy = cy + offY;
+    var lastC = -1;
+
+    for (var i = 0; i < n; i++) {
+      var x = nx[i], y = ny[i], z = nz[i];
+      var x1 = x * cyw - z * syw;
+      var z1 = x * syw + z * cyw;
+      var y2 = y * cp - z1 * sp;
+      var z2 = y * sp + z1 * cp;
+
+      var k = 2 / (2 + z2);              // perspective: 0.67 (far) to 2 (near)
+      var px = ox + x1 * S * k;
+      var py = oy + y2 * S * k;
+
+      var qx = lx[i], qy = ly[i];
+      if (qx !== qx) { qx = px; qy = py; } // NaN on first frame
+      lx[i] = px; ly[i] = py;
+
+      if (px < -24 || px > W + 24 || py < -24 || py > H + 24) continue;
+
+      var depth = (k - .667) / 1.333;      // 0..1
+      var a = alpha[i] * (.3 + .7 * depth);
+      if (!reduceMotion) a *= .72 + .28 * Math.sin(t * tws[i] + twp[i]);
+      var r = sz[i] * (.55 + .75 * depth);
+
+      if (ci[i] !== lastC) {
+        lastC = ci[i];
+        ctx.fillStyle = ctx.strokeStyle = COLORS[lastC];
+      }
+      ctx.globalAlpha = a;
+
+      var dx = px - qx, dy = py - qy, d2 = dx * dx + dy * dy;
+      if (d2 > 6 && d2 < 40000) {          // moving fast: draw a streak
+        ctx.lineWidth = Math.max(r * 1.5, .8);
+        ctx.beginPath(); ctx.moveTo(qx, qy); ctx.lineTo(px, py); ctx.stroke();
+      } else if (r < 1.1) {
+        ctx.fillRect(px - r, py - r, r * 2, r * 2);
+      } else {
+        ctx.beginPath(); ctx.arc(px, py, r, 0, 6.2832); ctx.fill();
+        if (r > 1.8) {
+          ctx.globalAlpha = a * .14;
+          ctx.beginPath(); ctx.arc(px, py, r * 3.2, 0, 6.2832); ctx.fill();
+        }
+      }
+    }
+
+    ctx.globalAlpha = 1;
+    if (glowA > .01) {
+      var g = ctx.createRadialGradient(gx, gy, 0, gx, gy, 150);
+      g.addColorStop(0, 'rgba(150,130,255,' + (.22 * glowA).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(150,130,255,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(gx - 150, gy - 150, 300, 300);
+    }
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('orientationchange', resize);
+  resize();
+  requestAnimationFrame(frame);
+
+  /* ===== COPY SERVER IP ===== */
+  var copyBtn = document.getElementById('copy');
+  var copyLabel = document.getElementById('copy-label');
+  var status = document.getElementById('status');
+  var resetTimer = null;
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(ta);
+      ok ? resolve() : reject();
+    });
+  }
+
+  function resetCopy() {
+    copyBtn.classList.remove('is-copied');
+    copyLabel.textContent = SERVER_IP;
+    copyBtn.style.minWidth = '';
+  }
+
+  copyBtn.addEventListener('click', function () {
+    copyBtn.style.minWidth = copyBtn.offsetWidth + 'px'; // keep width stable while the label changes
+    clearTimeout(resetTimer);
+    copyText(SERVER_IP).then(function () {
+      copyBtn.classList.add('is-copied');
+      copyLabel.textContent = 'Copied';
+      status.textContent = 'Copied ' + SERVER_IP + ' to clipboard';
+    }, function () {
+      var sel = window.getSelection();
+      if (sel) sel.selectAllChildren(copyLabel);
+      status.textContent = 'Copy failed. Select the address and copy it manually.';
+    });
+    resetTimer = setTimeout(resetCopy, 1800);
+  });
+})();
+</script>
 </body>
 </html>
