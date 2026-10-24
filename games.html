@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23050508'/><circle cx='16' cy='16' r='5' fill='%23b9c2ff'/><circle cx='16' cy='16' r='10' fill='%237c5cff' fill-opacity='.25'/></svg>">
 
 <style>
-/* ===== DESIGN TOKENS (same as index.html / share.html) ===== */
+/* ===== DESIGN TOKENS ===== */
 :root {
   --void: #050508;
   --ink: #f4f6ff;
@@ -35,7 +35,7 @@ body {
   background: var(--void);
   overflow-x: hidden;
 }
-body::before { /* faint nebula tint */
+body::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -102,7 +102,7 @@ body::before { /* faint nebula tint */
   border: 1px solid rgba(255, 255, 255, .1);
   background: rgba(16, 16, 30, .6);
   color: var(--ink);
-  font: 500 1rem/1 var(--font); /* 16px stops mobile zoom-on-focus */
+  font: 500 1rem/1 var(--font);
   transition: border-color .25s, box-shadow .25s;
   -webkit-appearance: none;
   appearance: none;
@@ -182,7 +182,7 @@ h1 {
     radial-gradient(100% 90% at 100% 100%, hsla(var(--h2), 90%, 60%, .45), transparent 60%),
     #0b0b16;
 }
-.thumb::after { /* tiny star specks */
+.thumb::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -194,7 +194,6 @@ h1 {
     radial-gradient(1px 1px at 30% 78%, #fff, transparent),
     radial-gradient(1px 1px at 55% 55%, #fff, transparent);
 }
-.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .ico { position: relative; z-index: 1; font-size: clamp(2.2rem, 11vw, 3rem); line-height: 1; filter: drop-shadow(0 0 14px rgba(255, 255, 255, .35)); transition: transform .35s cubic-bezier(.2, .7, .2, 1); }
 .info { display: flex; flex-direction: column; gap: 8px; padding: 12px 14px 14px; }
 .name { font-size: .98rem; font-weight: 600; letter-spacing: .01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -217,7 +216,7 @@ h1 {
 .empty { grid-column: 1 / -1; padding: 40px 12px; text-align: center; color: var(--ink-faint); line-height: 1.6; }
 .empty[hidden] { display: none; }
 
-/* ===== PLAYER (theater mode) ===== */
+/* ===== PLAYER ===== */
 .overlay {
   position: fixed;
   inset: 0;
@@ -375,32 +374,24 @@ h1 {
 (function () {
   'use strict';
 
-  /* =====================================================================
-     GAME CATALOG: add or remove games here.
-     id     : short unique slug (also used for links like /games#2048)
-     url    : the page that gets loaded inside the player (must be https)
-     icon   : emoji shown on the card (or add img: '/games/thumbs/name.png')
-     hue    : two colours (0-360) for the card's gradient
-     Only add games you have the right to embed. Open-source and
-     author-hosted games are the safest choice.
-     ===================================================================== */
+  /* ===== MODERN GAME CATALOG ===== */
   var GAMES = [
-    { id: '2048', title: '2048', by: 'Gabriele Cirulli', tags: ['Puzzle'],
-      url: 'https://gabrielecirulli.github.io/2048/', icon: '🔢', hue: [38, 18] },
-    { id: 'hextris', title: 'Hextris', by: 'Logan Engstrom and friends', tags: ['Puzzle', 'Arcade'],
-      url: 'https://hextris.github.io/hextris/', icon: '🔷', hue: [190, 270] },
-    { id: 'hexgl', title: 'HexGL', by: 'Thibaut Despoulain', tags: ['Racing', '3D'],
-      url: 'https://hexgl.bkcore.com/', icon: '🏎️', hue: [200, 305] },
-    { id: 'clumsy-bird', title: 'Clumsy Bird', by: 'Ellison Leão', tags: ['Arcade'],
-      url: 'https://ellisonleao.github.io/clumsy-bird/', icon: '🐦', hue: [48, 165] },
-    { id: 'a-dark-room', title: 'A Dark Room', by: 'Doublespeak Games', tags: ['Text', 'Adventure'],
-      url: 'https://adarkroom.doublespeakgames.com/', icon: '🔥', hue: [18, 350] },
-    { id: 'elevator-saga', title: 'Elevator Saga', by: 'magwo', tags: ['Coding', 'Puzzle'],
-      url: 'https://play.elevatorsaga.com/', icon: '🏢', hue: [262, 200] },
-    { id: '0hh1', title: '0h h1', by: 'Q42', tags: ['Puzzle', 'Logic'],
-      url: 'https://0hh1.com/', icon: '🧩', hue: [350, 215] },
-    { id: 'cubiks-2048', title: 'Cubiks 2048', by: 'Kshitij Banerjee', tags: ['Puzzle', '3D'],
-      url: 'https://kshitij-banerjee.github.io/Cubiks-2048/', icon: '🧊', hue: [172, 232] }
+    { id: 'subway-surfers', title: 'Subway Surfers', by: 'Kiloo & SYBO', tags: ['Runner', '3D'],
+      url: 'https://subtlexp.github.io/Subway-Surfers/', icon: '🛹', hue: [18, 45] },
+    { id: 'slope', title: 'Slope', by: 'Y8 Games', tags: ['3D', 'Speed'],
+      url: 'https://kdata1.com/2020/05/slope/', icon: '⚡', hue: [140, 190] },
+    { id: 'drive-mad', title: 'Drive Mad', by: 'Fancade', tags: ['Driving', 'Physics'],
+      url: 'https://ubg77.github.io/edit/drive-mad/', icon: '🚗', hue: [20, 340] },
+    { id: 'retro-bowl', title: 'Retro Bowl', by: 'New Star Games', tags: ['Sports', 'Football'],
+      url: 'https://game316009.hostingerapp.com/', icon: '🏈', hue: [30, 200] },
+    { id: 'ovo', title: 'OvO', by: 'Dedra Games', tags: ['Parkour', 'Speedrun'],
+      url: 'https://dedragames.com/games/ovo/1.4.4/', icon: '🏃', hue: [260, 310] },
+    { id: 'moto-x3m', title: 'Moto X3M', by: 'MadPuffers', tags: ['Racing', 'Action'],
+      url: 'https://motox3m.co/moto-x3m.embed', icon: '🏍️', hue: [35, 15] },
+    { id: 'drift-hunters', title: 'Drift Hunters', by: 'Ilya Kaminetsky', tags: ['Drifting', '3D'],
+      url: 'https://drift-hunters.co/drift-hunters.embed', icon: '🏎️', hue: [210, 270] },
+    { id: 'crossy-road', title: 'Crossy Road', by: 'Hipster Whale', tags: ['Arcade', 'Action'],
+      url: 'https://crossy-road.github.io/', icon: '🐔', hue: [90, 160] }
   ];
 
   var $ = function (id) { return document.getElementById(id); };
@@ -430,12 +421,6 @@ h1 {
       s.className = 'tag'; s.textContent = t;
       tg.appendChild(s);
     });
-    if (g.img) {
-      var im = document.createElement('img');
-      im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; im.src = g.img;
-      im.onerror = function () { im.remove(); };
-      b.querySelector('.thumb').appendChild(im);
-    }
     b.setAttribute('aria-label', 'Play ' + g.title);
     b.addEventListener('click', function () { open(g, true); });
     g.node = b;
@@ -482,7 +467,7 @@ h1 {
     }
     if (el.overlay.classList.contains('max')) { el.overlay.classList.remove('max'); syncFS(); return; }
     var req = el.panel.requestFullscreen || el.panel.webkitRequestFullscreen;
-    var fallback = function () { el.overlay.classList.add('max'); syncFS(); }; // browsers without element fullscreen
+    var fallback = function () { el.overlay.classList.add('max'); syncFS(); };
     if (!req) { fallback(); return; }
     try { Promise.resolve(req.call(el.panel)).catch(fallback); } catch (e) { fallback(); }
   }
@@ -501,14 +486,13 @@ h1 {
     el.overlay.classList.remove('max');
     el.overlay.hidden = false;
     document.documentElement.classList.add('playing');
-    paused = true; // stop the background starfield while a game runs
+    paused = true;
     syncFS();
 
     var f = document.createElement('iframe');
     f.title = g.title;
     f.setAttribute('allow', 'autoplay; fullscreen; gamepad');
     f.setAttribute('allowfullscreen', '');
-    f.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-pointer-lock allow-forms allow-modals');
     f.referrerPolicy = 'no-referrer';
     f.addEventListener('load', function () {
       clearTimeout(slowT);
@@ -519,15 +503,13 @@ h1 {
 
     clearTimeout(slowT);
     slowT = setTimeout(function () {
-      el.msg.textContent = 'Still loading. If nothing appears, this game may not allow embedding. Try “Open in new tab” at the top.';
+      el.msg.textContent = 'Still loading. If nothing appears, tap “Open in new tab” at the top.';
     }, 9000);
 
-    // Focus the dialog (not the game) so Esc works right away; tapping the game hands it the keyboard.
     el.panel.focus();
     if (push) history.pushState({ game: g.id }, '', '#' + g.id);
   }
 
-  // Destroying the iframe is what actually stops the game's audio and network.
   function kill() {
     clearTimeout(slowT);
     var f = el.stage.querySelector('iframe');
@@ -546,8 +528,6 @@ h1 {
     if (opener && opener.focus) { try { opener.focus(); } catch (e) {} }
   }
 
-  // Closing via the button, Esc or a backdrop tap steps back through history,
-  // which keeps the phone's back gesture and the Close button in sync.
   function requestClose() {
     if (!current) return;
     if (history.state && history.state.game) history.back();
@@ -571,14 +551,13 @@ h1 {
   });
   window.addEventListener('pagehide', kill);
 
-  // Deep link: /games#hextris opens that game directly
   var linked = fromHash();
   if (linked) {
     history.replaceState(null, '', location.pathname + location.search);
     open(linked, true);
   }
 
-  /* ===== STARFIELD BACKDROP (light, non-interactive) ===== */
+  /* ===== STARFIELD BACKDROP ===== */
   (function () {
     var c = $('bg'), x = c.getContext('2d'), W = 0, H = 0, stars = [], last = 0;
     function size() {
