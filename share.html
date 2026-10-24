@@ -5,414 +5,301 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>bjorn — drop</title>
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #090a0f;
-      --card-bg: rgba(18, 20, 29, 0.7);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --input-bg: rgba(255, 255, 255, 0.04);
-      --accent: #6366f1;
-      --accent-hover: #4f46e5;
-      --accent-glow: rgba(99, 102, 241, 0.25);
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --success: #10b981;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body {
-      background-color: var(--bg);
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
-      color: var(--text);
+      background: #090a0f;
+      color: #f8fafc;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      padding: 24px 16px;
+      padding: 20px;
     }
-
-    .container {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 32px 28px;
+    .card {
+      background: #12141d;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 24px;
       width: 100%;
-      max-width: 440px;
-      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7);
+      max-width: 420px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     }
-
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .brand {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .status-pill {
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #eab308;
-    }
-
-    .status-pill.connected {
-      color: var(--success);
-      border-color: rgba(16, 185, 129, 0.2);
-      background: rgba(16, 185, 129, 0.08);
-    }
-
-    .status-pill.connected .status-dot {
-      background: var(--success);
-      box-shadow: 0 0 8px var(--success);
-    }
-
-    .key-card {
-      background: var(--input-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       margin-bottom: 20px;
     }
-
-    .key-info span {
-      display: block;
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .status {
       font-size: 11px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-      margin-bottom: 2px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      color: #94a3b8;
     }
-
-    .key-val {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #a5b4fc;
+    .status.online {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
     }
-
-    .key-actions {
+    .key-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 14px 16px;
       display: flex;
-      gap: 6px;
-    }
-
-    .btn-icon {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--card-border);
-      color: var(--text);
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .btn-icon:hover { background: rgba(255, 255, 255, 0.12); }
-
-    .qr-modal {
-      display: none;
-      background: #fff;
-      padding: 16px;
-      border-radius: 16px;
-      margin: 0 auto 20px auto;
-      width: max-content;
-    }
-
-    .input-group {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    input[type="text"] {
-      flex: 1;
-      background: var(--input-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 12px 16px;
-      color: #fff;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      outline: none;
-      transition: 0.2s;
-    }
-
-    input[type="text"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 0 20px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      box-shadow: 0 0 16px var(--accent-glow);
-    }
-
-    .tabs {
-      display: flex;
-      gap: 4px;
-      background: var(--input-bg);
-      padding: 4px;
-      border-radius: 12px;
       margin-bottom: 16px;
     }
-
-    .tab {
-      flex: 1;
-      background: transparent;
+    .key-label {
+      font-size: 11px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .key-code {
+      font-family: monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: #818cf8;
+      letter-spacing: 1.5px;
+    }
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.08);
       border: none;
-      color: var(--text-muted);
-      padding: 8px;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .connect-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: #fff;
+      font-family: monospace;
+      font-size: 14px;
+      outline: none;
+    }
+    input[type="text"]:focus {
+      border-color: #6366f1;
+    }
+    .btn-connect {
+      background: #6366f1;
+      border: none;
+      color: #fff;
+      border-radius: 10px;
+      padding: 0 16px;
       font-size: 13px;
       font-weight: 600;
-      border-radius: 8px;
       cursor: pointer;
-      transition: 0.2s;
     }
-
-    .tab.active {
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-    }
-
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-
     .dropzone {
       border: 2px dashed rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      padding: 32px 16px;
+      border-radius: 14px;
+      padding: 24px 16px;
       text-align: center;
       cursor: pointer;
-      transition: 0.2s;
+      margin-bottom: 16px;
       background: rgba(255, 255, 255, 0.01);
     }
-
     .dropzone:hover {
-      border-color: var(--accent);
-      background: rgba(99, 102, 241, 0.04);
+      border-color: #6366f1;
+      background: rgba(99, 102, 241, 0.05);
     }
-
-    .dropzone svg {
-      width: 32px;
-      height: 32px;
-      stroke: var(--text-muted);
-      margin-bottom: 10px;
-      transition: 0.2s;
-    }
-
-    .dropzone:hover svg {
-      stroke: var(--accent);
-    }
-
     .dropzone p {
       font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
+      font-weight: 600;
+      color: #f1f5f9;
     }
-
     .dropzone span {
       font-size: 11px;
-      color: var(--text-muted);
+      color: #64748b;
       margin-top: 4px;
       display: block;
     }
-
     textarea {
       width: 100%;
-      background: var(--input-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 10px 14px;
       color: #fff;
       font-size: 13px;
       outline: none;
       resize: none;
-      height: 85px;
-      margin-bottom: 12px;
-      transition: 0.2s;
+      height: 60px;
+      margin-bottom: 8px;
     }
-
-    textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
+    .btn-send {
+      width: 100%;
+      background: #27272a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
     }
-
+    .btn-send:hover {
+      background: #3f3f46;
+    }
     .feed {
-      margin-top: 24px;
+      margin-top: 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
+      font-size: 12px;
     }
-
     .feed-item {
-      background: var(--input-bg);
-      border: 1px solid var(--card-border);
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-size: 13px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 12px;
+      border-radius: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      word-break: break-all;
     }
-
     .feed-item a {
-      color: #a5b4fc;
+      color: #818cf8;
       text-decoration: none;
       font-weight: 600;
-      background: rgba(99, 102, 241, 0.15);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-    }
-
-    .feed-item a:hover {
-      background: rgba(99, 102, 241, 0.3);
+      margin-left: 10px;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
+<div class="card">
   <div class="header">
-    <div class="brand">bjorn // drop</div>
-    <div class="status-pill" id="status-pill">
-      <div class="status-dot"></div>
-      <span id="status-text">Ready</span>
+    <div class="title">bjorn // drop</div>
+    <div class="status" id="status-badge">Ready</div>
+  </div>
+
+  <div class="key-box">
+    <div>
+      <div class="key-label">Your Key</div>
+      <div class="key-code" id="my-id">...</div>
     </div>
+    <button class="copy-btn" onclick="copyKey()">Copy</button>
   </div>
 
-  <div class="key-card">
-    <div class="key-info">
-      <span>Device Key</span>
-      <div class="key-val" id="my-id">------</div>
-    </div>
-    <div class="key-actions">
-      <button class="btn-icon" onclick="copyKey()" title="Copy Key">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-      </button>
-      <button class="btn-icon" onclick="toggleQR()" title="Scan QR">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-      </button>
-    </div>
+  <div class="connect-row">
+    <input type="text" id="target-id" placeholder="Remote key...">
+    <button class="btn-connect" onclick="connectToPeer()">Connect</button>
   </div>
 
-  <div id="qrcode" class="qr-modal"></div>
-
-  <div class="input-group">
-    <input type="text" id="target-id" placeholder="Paste remote key...">
-    <button class="btn-primary" onclick="connectToPeer()">Connect</button>
+  <div class="dropzone" onclick="document.getElementById('file-input').click()">
+    <input type="file" id="file-input" style="display:none" onchange="sendFile(this.files[0])">
+    <p>Drop or Select File / APK</p>
+    <span>Direct P2P • No limits</span>
   </div>
 
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab('file')">Files & APKs</button>
-    <button class="tab" onclick="switchTab('text')">Text Clip</button>
-  </div>
-
-  <div id="tab-file" class="tab-content active">
-    <div class="dropzone" onclick="document.getElementById('file-input').click()">
-      <input type="file" id="file-input" style="display:none" onchange="sendFile(this.files[0])">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 16.5V3m0 0l-4 4m4-4l4 4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
-      <p>Select File or APK</p>
-      <span>P2P direct transfer • Unlimited size</span>
-    </div>
-  </div>
-
-  <div id="tab-text" class="tab-content">
-    <textarea id="text-msg" placeholder="Paste raw text, link, or note to beam across..."></textarea>
-    <button class="btn-primary" style="width: 100%; height: 40px;" onclick="sendText()">Send Text</button>
-  </div>
+  <textarea id="text-msg" placeholder="Paste link or text to send..."></textarea>
+  <button class="btn-send" onclick="sendText()">Send Text</button>
 
   <div class="feed" id="feed"></div>
 </div>
 
 <script>
-  const peer = new Peer(Math.random().toString(36).substring(2, 8).toUpperCase());
+  let myKey = Math.random().toString(36).substring(2, 8).toUpperCase();
+  const peer = new Peer(myKey);
   let conn = null;
 
   peer.on('open', id => {
     document.getElementById('my-id').innerText = id;
-    new QRCode(document.getElementById("qrcode"), {
-      text: `${window.location.origin}/share?connect=${id}`,
-      width: 120,
-      height: 120
-    });
-
-    const params = new URLSearchParams(window.location.search);
-    const target = params.get('connect');
-    if (target) {
-      document.getElementById('target-id').value = target;
-      connectToPeer();
-    }
   });
 
   peer.on('connection', c => {
     conn = c;
-    bindEvents();
+    setupEvents();
   });
 
   function connectToPeer() {
     const target = document.getElementById('target-id').value.trim().toUpperCase();
     if (!target) return;
     conn = peer.connect(target);
-    bindEvents();
+    setupEvents();
   }
 
-  function bindEvents() {
+  function setupEvents() {
     conn.on('open', () => {
-      const pill = document.getElementById('status-pill');
-      pill.classList.add('connected');
-      document.getElementById('status-text').innerText = 'Connected';
+      const badge = document.getElementById('status-badge');
+      badge.classList.add('online');
+      badge.innerText = 'Connected';
     });
 
     conn.on('data', data => {
       if (data.type === 'file') {
+        const blob = new Blob([data.file], { type: data.filetype });
+        const url = URL.createObjectURL(blob);
+        addFeed(`<span>${escapeHtml(data.filename)}</span> <a href="${url}" download="${escapeHtml(data.filename)}">Download</a>`);
+      } else if (data.type === 'text') {
+        addFeed(`<span>${escapeHtml(data.text)}</span>`);
+      }
+    });
+
+    conn.on('close', () => {
+      const badge = document.getElementById('status-badge');
+      badge.classList.remove('online');
+      badge.innerText = 'Disconnected';
+    });
+  }
+
+  function sendFile(file) {
+    if (!conn || !conn.open) return alert('Connect to a device first.');
+    if (!file) return;
+    conn.send({ type: 'file', file: file, filename: file.name, filetype: file.type });
+    addFeed(`<span>Sent: ${escapeHtml(file.name)}</span>`);
+  }
+
+  function sendText() {
+    if (!conn || !conn.open) return alert('Connect to a device first.');
+    const el = document.getElementById('text-msg');
+    const txt = el.value.trim();
+    if (!txt) return;
+    conn.send({ type: 'text', text: txt });
+    addFeed(`<span>Sent: ${escapeHtml(txt)}</span>`);
+    el.value = '';
+  }
+
+  function addFeed(html) {
+    const feed = document.getElementById('feed');
+    const row = document.createElement('div');
+    row.className = 'feed-item';
+    row.innerHTML = html;
+    feed.prepend(row);
+  }
+
+  function copyKey() {
+    const key = document.getElementById('my-id').innerText;
+    if (key && key !== '...') {
+      navigator.clipboard.writeText(key);
+      alert('Key copied: ' + key);
+    }
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+</script>
+
+</body>
+</html>
