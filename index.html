@@ -117,7 +117,7 @@ html.grabbing #sky { cursor: grabbing; }
   bottom: calc(env(safe-area-inset-bottom, 0px) + 22px);
   z-index: 2;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   gap: .6rem;
   padding: 0 .75rem;
@@ -172,21 +172,6 @@ html.grabbing #sky { cursor: grabbing; }
   .pill { background: rgba(16, 16, 30, .85); }
 }
 
-/* Copy button states */
-.pill .ico-check { display: none; }
-.pill.is-copied { border-color: rgba(var(--cyan), .6); color: #fff; }
-.pill.is-copied .ico-copy { display: none; }
-.pill.is-copied .ico-check { display: block; stroke: rgb(var(--cyan)); }
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
 /* ===== MOTION ===== */
 @keyframes emerge {
   from { opacity: 0; filter: blur(14px); transform: scale(1.06); }
@@ -231,16 +216,7 @@ html.grabbing #sky { cursor: grabbing; }
     <svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
     <span>GitHub</span>
   </a>
-
-  <button class="pill" id="copy" type="button" aria-label="Copy Minecraft server address play.bjornon.top">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 3.5 7v10L12 21.5 20.5 17V7L12 2.5ZM3.5 7 12 11.5 20.5 7M12 11.5v10"/></svg>
-    <span id="copy-label">play.bjornon.top</span>
-    <svg class="ico-copy" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5.5 15A1.5 1.5 0 0 1 4 13.5v-8A1.5 1.5 0 0 1 5.5 4h8A1.5 1.5 0 0 1 15 5.5"/></svg>
-    <svg class="ico-check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
-  </button>
 </nav>
-
-<span class="sr-only" id="status" role="status" aria-live="polite"></span>
 
 <script>
 (function () {
@@ -256,7 +232,6 @@ html.grabbing #sky { cursor: grabbing; }
     friction: 1.6,       // how quickly the spin settles after release
     parallax: 16         // mouse-hover shift in pixels (desktop only)
   };
-  var SERVER_IP = 'play.bjornon.top';
   var COLORS = ['rgb(232,236,255)', 'rgb(176,196,255)', 'rgb(196,170,255)', 'rgb(150,224,255)', 'rgb(255,226,190)'];
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -459,52 +434,6 @@ html.grabbing #sky { cursor: grabbing; }
   window.addEventListener('orientationchange', resize);
   resize();
   requestAnimationFrame(frame);
-
-  /* ===== COPY SERVER IP ===== */
-  var copyBtn = document.getElementById('copy');
-  var copyLabel = document.getElementById('copy-label');
-  var status = document.getElementById('status');
-  var resetTimer = null;
-
-  function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text);
-    }
-    return new Promise(function (resolve, reject) {
-      var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.setAttribute('readonly', '');
-      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
-      document.body.appendChild(ta);
-      ta.select();
-      ta.setSelectionRange(0, text.length);
-      var ok = false;
-      try { ok = document.execCommand('copy'); } catch (err) {}
-      document.body.removeChild(ta);
-      ok ? resolve() : reject();
-    });
-  }
-
-  function resetCopy() {
-    copyBtn.classList.remove('is-copied');
-    copyLabel.textContent = SERVER_IP;
-    copyBtn.style.minWidth = '';
-  }
-
-  copyBtn.addEventListener('click', function () {
-    copyBtn.style.minWidth = copyBtn.offsetWidth + 'px'; // keep width stable while the label changes
-    clearTimeout(resetTimer);
-    copyText(SERVER_IP).then(function () {
-      copyBtn.classList.add('is-copied');
-      copyLabel.textContent = 'Copied';
-      status.textContent = 'Copied ' + SERVER_IP + ' to clipboard';
-    }, function () {
-      var sel = window.getSelection();
-      if (sel) sel.selectAllChildren(copyLabel);
-      status.textContent = 'Copy failed. Select the address and copy it manually.';
-    });
-    resetTimer = setTimeout(resetCopy, 1800);
-  });
 })();
 </script>
 </body>
