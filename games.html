@@ -374,24 +374,80 @@ h1 {
 (function () {
   'use strict';
 
-  /* ===== MODERN GAME CATALOG ===== */
+  /* ===== VERIFIED WORKING GAMES ===== */
   var GAMES = [
-    { id: 'subway-surfers', title: 'Subway Surfers', by: 'Kiloo & SYBO', tags: ['Runner', '3D'],
-      url: 'https://subtlexp.github.io/Subway-Surfers/', icon: '🛹', hue: [18, 45] },
-    { id: 'slope', title: 'Slope', by: 'Y8 Games', tags: ['3D', 'Speed'],
-      url: 'https://kdata1.com/2020/05/slope/', icon: '⚡', hue: [140, 190] },
-    { id: 'drive-mad', title: 'Drive Mad', by: 'Fancade', tags: ['Driving', 'Physics'],
-      url: 'https://ubg77.github.io/edit/drive-mad/', icon: '🚗', hue: [20, 340] },
-    { id: 'retro-bowl', title: 'Retro Bowl', by: 'New Star Games', tags: ['Sports', 'Football'],
-      url: 'https://game316009.hostingerapp.com/', icon: '🏈', hue: [30, 200] },
-    { id: 'ovo', title: 'OvO', by: 'Dedra Games', tags: ['Parkour', 'Speedrun'],
-      url: 'https://dedragames.com/games/ovo/1.4.4/', icon: '🏃', hue: [260, 310] },
-    { id: 'moto-x3m', title: 'Moto X3M', by: 'MadPuffers', tags: ['Racing', 'Action'],
-      url: 'https://motox3m.co/moto-x3m.embed', icon: '🏍️', hue: [35, 15] },
-    { id: 'drift-hunters', title: 'Drift Hunters', by: 'Ilya Kaminetsky', tags: ['Drifting', '3D'],
-      url: 'https://drift-hunters.co/drift-hunters.embed', icon: '🏎️', hue: [210, 270] },
-    { id: 'crossy-road', title: 'Crossy Road', by: 'Hipster Whale', tags: ['Arcade', 'Action'],
-      url: 'https://crossy-road.github.io/', icon: '🐔', hue: [90, 160] }
+    { 
+      id: 'drive-mad', 
+      title: 'Drive Mad', 
+      by: 'Fancade', 
+      tags: ['Fancade', 'Physics'],
+      url: 'https://play.fancade.com/5F1B3E03DF7B8B11',
+      icon: '🚗', 
+      hue: [20, 340] 
+    },
+    { 
+      id: 'cookie-clicker', 
+      title: 'Cookie Clicker', 
+      by: 'Orteil', 
+      tags: ['Clicker', 'Idle'],
+      url: 'https://orteil.dashnet.org/cookieclicker/',
+      icon: '🍪', 
+      hue: [35, 60] 
+    },
+    { 
+      id: 'fireboy-watergirl', 
+      title: 'Fireboy & Watergirl', 
+      by: 'Aptly', 
+      tags: ['Friv', 'Co-op'],
+      url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydob/bobb@808945484ecf97e2f5b497eefb3b19280d0d65b1/fbwg/index.xml&container=ig',
+      icon: '🔥', 
+      hue: [15, 200] 
+    },
+    { 
+      id: 'recoil', 
+      title: 'Recoil', 
+      by: 'Fancade', 
+      tags: ['Fancade', 'Shooter'],
+      url: 'https://play.fancade.com/5EA148BA8B6BF1A8',
+      icon: '🔫', 
+      hue: [350, 45] 
+    },
+    { 
+      id: 'speed-king', 
+      title: 'Speed King', 
+      by: 'Fancade', 
+      tags: ['Fancade', 'Dungeon'],
+      url: 'https://play.fancade.com/5EA356DA88D7CF42',
+      icon: '👑', 
+      hue: [45, 280] 
+    },
+    { 
+      id: 'bad-ice-cream', 
+      title: 'Bad Ice-Cream', 
+      by: 'Nitrome', 
+      tags: ['Friv', 'Arcade'],
+      url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydob/bobb@808945484ecf97e2f5b497eefb3b19280d0d65b1/bad-ice-cream/index.xml&container=ig',
+      icon: '🍦', 
+      hue: [180, 260] 
+    },
+    { 
+      id: 'subway-surfers', 
+      title: 'Subway Surfers', 
+      by: 'SYBO Games', 
+      tags: ['3D', 'Runner'],
+      url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydob/bobb@808945484ecf97e2f5b497eefb3b19280d0d65b1/subway-surfers/san-francisco/index.xml&container=ig',
+      icon: '🛹', 
+      hue: [20, 50] 
+    },
+    { 
+      id: 'ovo', 
+      title: 'OvO (v1.4.4)', 
+      by: 'Dedra Games', 
+      tags: ['Parkour', 'Speedrun'],
+      url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydob/bobb@808945484ecf97e2f5b497eefb3b19280d0d65b1/ovo/index.xml&container=ig',
+      icon: '🏃', 
+      hue: [260, 310] 
+    }
   ];
 
   var $ = function (id) { return document.getElementById(id); };
