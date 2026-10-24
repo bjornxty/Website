@@ -367,7 +367,8 @@ textarea.input { display: block; width: 100%; min-height: 96px; padding: 12px 14
   var READ = 1048576;           // bytes read from disk at a time
   var HIGH = 4 * 1048576;       // pause sending when this much is queued
   var MERGE = 32 * 1048576;     // receiver folds chunks into Blobs this often (keeps memory low)
-  var ALPHA = 'abcdefghjkmnpqrstuvwxyz23456789';
+  var ALPHA = 'abcdefghjkmnpqrstuvwxyz23456789'; // no look-alikes (0/o, 1/l/i)
+  var KEY_LENGTH = 10;          // random letters and numbers only
   // PeerJS is loaded from your own site first (add peerjs.min.js to the repo root),
   // then from a pinned jsDelivr copy as a fallback.
   var SOURCES = ['/peerjs.min.js', 'https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js'];
@@ -477,9 +478,19 @@ textarea.input { display: block; width: 100%; min-height: 96px; padding: 12px 14
   }
 
   function newKey() {
-    var r = new Uint8Array(8);
+    var r = new Uint8Array(KEY_LENGTH);
     crypto.getRandomValues(r);
-    return 'bjn-' + Array.prototype.map.call(r, function (x) { return ALPHA[x % ALPHA.length]; }).join('');
+    return Array.prototype.map.call(r, function (x) { return ALPHA[x % ALPHA.length]; }).join('');
+  }
+
+  // A saved key is only reused if it matches the current format exactly.
+  // Anything older (such as the "bjn-" prefixed keys) is discarded and replaced.
+  var KEY_FORMAT = new RegExp('^[' + ALPHA + ']{' + KEY_LENGTH + '}$');
+  function savedKey() {
+    var k = store.get('bjn-key');
+    if (k && KEY_FORMAT.test(k)) return k;
+    if (k) store.del('bjn-key');
+    return '';
   }
 
   function start(fresh) {
@@ -489,7 +500,7 @@ textarea.input { display: block; width: 100%; min-height: 96px; padding: 12px 14
     el.key.classList.add('dim');
     el.copy.disabled = el.link.disabled = true;
 
-    var key = (!fresh && store.get('bjn-key')) || newKey();
+    var key = (!fresh && savedKey()) || newKey();
     store.set('bjn-key', key);
     var p = peer = new Peer(key);
     function on(ev, fn) { p.on(ev, function (a) { if (p === peer) fn(a); }); }
