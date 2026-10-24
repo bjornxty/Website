@@ -1,0 +1,17 @@
+{
+  "name": "Bjorn Space",
+  "short_name": "Bjorn",
+  "description": "Bjorn's personal space and peer-to-peer file drop.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050508",
+  "theme_color": "#050508",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='128' fill='%23050508'/><circle cx='256' cy='256' r='90' fill='%23b9c2ff'/><circle cx='256' cy='256' r='180' fill='%237c5cff' fill-opacity='.25'/></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
