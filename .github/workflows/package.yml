@@ -19,9 +19,7 @@ jobs:
           node-version: 20
 
       - name: Build Plugins and Update Manifest
-        run: |
-          npm install archiver
-          node build.js
+        run: node build.js
 
       - name: Commit and Push
         run: |
