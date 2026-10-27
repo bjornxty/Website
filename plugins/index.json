@@ -14,8 +14,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.character-counter@1.0.0.zip",
-          "sha256": "16e6c1dc3c7e78edd814cb288d0bd6e51d2657c46a5916fbe4829ea36cdbc499",
-          "size": 608,
+          "sha256": "ce9742b2560b00542dcdcb43030341b8df1279b20e9612af6c4fcea23ae69793",
+          "size": 1911,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -27,19 +27,19 @@
         }
       }
     },
-    "bjorn.copy-bio": {
-      "name": "Copy Bio",
-      "description": "Allows copying a user's bio directly from their profile.",
-      "author": "shipwr3ckd",
-      "icon": "CopyIcon",
+    "bjorn.file-size-on-picker": {
+      "name": "File Size on Picker",
+      "description": "Show file sizes in the media picker.",
+      "author": "contrabags",
+      "icon": "FileIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.copy-bio@1.0.0.zip",
-          "sha256": "ae280f504f0536340ba6c64ff667ccb6b54256ee53a522588a320a08f56f44c4",
-          "size": 603,
+          "url": "https://bjornon.top/plugins/pool/bjorn.file-size-on-picker@1.0.0.zip",
+          "sha256": "98b588e76d6effc5830166fcc69da648012ec8a9eec851500dc72384255866c3",
+          "size": 1860,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -51,19 +51,19 @@
         }
       }
     },
-    "bjorn.custom-voice-messages": {
-      "name": "Custom Voice Messages",
-      "description": "Customize and send voice messages with enhanced options.",
-      "author": "shipwr3ckd",
-      "icon": "MicrophoneIcon",
+    "bjorn.anonymous-file-names": {
+      "name": "Anonymous File Names",
+      "description": "Randomizes file names before you upload them.",
+      "author": "k1ng_op",
+      "icon": "UnknownGameIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.custom-voice-messages@1.0.0.zip",
-          "sha256": "63c5b6fb81385fd190b73a89ed5bea4c78d010193532967f828c32dd3086cfd3",
-          "size": 618,
+          "url": "https://bjornon.top/plugins/pool/bjorn.anonymous-file-names@1.0.0.zip",
+          "sha256": "460d8d3f81552299a46f8da13b28d0be358f15d9942bc58135aa5bd4ad4b5584",
+          "size": 1773,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -75,19 +75,19 @@
         }
       }
     },
-    "bjorn.favorite-anything": {
-      "name": "Favorite Anything",
-      "description": "Allows favoriting emojis, stickers, and other media anywhere.",
-      "author": "theunrealzaka",
-      "icon": "HeartIcon",
+    "bjorn.silent-typing": {
+      "name": "Silent Typing",
+      "description": "Disables the typing indicator when you type.",
+      "author": "Palm",
+      "icon": "KeyboardIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.favorite-anything@1.0.0.zip",
-          "sha256": "3422b77637c2902ab3144a89f9f74af51f3b3cb8d8c82994332f9e5c00951a6a",
-          "size": 620,
+          "url": "https://bjornon.top/plugins/pool/bjorn.silent-typing@1.0.0.zip",
+          "sha256": "591da6ca0e0adf83eda41cb2437c21960025ff5f33360b113a41308ab2bdb901",
+          "size": 1995,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -99,19 +99,19 @@
         }
       }
     },
-    "bjorn.gestures-plus": {
-      "name": "Gestures+",
-      "description": "Adds customizable navigation and swipe gestures.",
-      "author": "rksv",
-      "icon": "MobileIcon",
+    "bjorn.better-chat-buttons": {
+      "name": "Better Chat Buttons",
+      "description": "Hiding all annoying chat buttons, or making them never collapse, all configurable.",
+      "author": "Palm",
+      "icon": "ChatCheckIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.gestures-plus@1.0.0.zip",
-          "sha256": "5271f22f40831dfd35559d5530a1b9e9334fbc53af2db2a82a638f3bc6e95a71",
-          "size": 593,
+          "url": "https://bjornon.top/plugins/pool/bjorn.better-chat-buttons@1.0.0.zip",
+          "sha256": "5ac5663ad0f93f30206957b7a014003ea6520d87cd3790d67f4dc343a9b0c55e",
+          "size": 1969,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -123,19 +123,19 @@
         }
       }
     },
-    "bjorn.jump-to-top": {
-      "name": "Jump To Top",
-      "description": "Quickly scroll to the very top of a chat or channel.",
-      "author": "tralwdwd",
-      "icon": "ArrowUpIcon",
+    "bjorn.hide-blocked-messages": {
+      "name": "Hide Blocked Messages",
+      "description": "Hides messages from blocked or ignored users, and optionally removes replies to them.",
+      "author": "Palm",
+      "icon": "DenyIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.jump-to-top@1.0.0.zip",
-          "sha256": "9be14c7c6bc382bb4b17a5bb4b617c2afaa69bbed61ebb2b0ec544e2ab98f099",
-          "size": 603,
+          "url": "https://bjornon.top/plugins/pool/bjorn.hide-blocked-messages@1.0.0.zip",
+          "sha256": "89d47806cae93ad66283314afe54048abf02dee606c53f44fb10ea4b1b9bfbed",
+          "size": 1422,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -147,19 +147,19 @@
         }
       }
     },
-    "bjorn.permission-viewer": {
-      "name": "Permission Viewer",
-      "description": "Inspect member permissions and role setups inside servers.",
-      "author": "lvwmwm",
-      "icon": "ShieldIcon",
+    "bjorn.dashless": {
+      "name": "Dashless",
+      "description": "Changes dashes in text channel names to spaces.",
+      "author": "k1ng_op",
+      "icon": "ChannelListIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.permission-viewer@1.0.0.zip",
-          "sha256": "3438285ed61e7ca70fb895e0373c4733dca18c32755ed078f30638ebb6f2959b",
-          "size": 606,
+          "url": "https://bjornon.top/plugins/pool/bjorn.dashless@1.0.0.zip",
+          "sha256": "6e42fae547e82975cbdce124d7f7be7a73bb8d5a2a9a5f6463d45c07dc8e8d88",
+          "size": 1132,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -171,19 +171,19 @@
         }
       }
     },
-    "bjorn.platform-indicators": {
-      "name": "Platform Indicators",
-      "description": "Shows icons for Desktop, Mobile, or Web on user avatars.",
-      "author": "martinz64",
-      "icon": "EyeIcon",
+    "bjorn.disable-call-idle": {
+      "name": "Disable Call Idle",
+      "description": "Stop getting kicked from empty voice calls after 3 minutes.",
+      "author": "k1ng_op",
+      "icon": "PhoneCallIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.platform-indicators@1.0.0.zip",
-          "sha256": "dca6f7d5a303380d64beb5d0f9b939ffa76d8d2244cb54be2b11914025012ee9",
-          "size": 625,
+          "url": "https://bjornon.top/plugins/pool/bjorn.disable-call-idle@1.0.0.zip",
+          "sha256": "268f8cd5558a5e05f713aa742a82301389cf43e95c7b73f61859c8dae66187d8",
+          "size": 729,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -195,19 +195,19 @@
         }
       }
     },
-    "bjorn.rich-presence": {
-      "name": "Rich Presence",
-      "description": "Customizable Discord Rich Presence status manager.",
-      "author": "shipwr3ckd",
-      "icon": "GameIcon",
+    "bjorn.fake-nitro": {
+      "name": "Fake Nitro",
+      "description": "Use some Nitro features without Nitro.",
+      "author": "Palm",
+      "icon": "NitroWheelIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.rich-presence@1.0.0.zip",
-          "sha256": "61a2c95fae2d85d93e64e08882807b3a6671e68b446b5ba31a3b73be18bf098d",
-          "size": 603,
+          "url": "https://bjornon.top/plugins/pool/bjorn.fake-nitro@1.0.0.zip",
+          "sha256": "e2e9a21f1f674b8ccd0888a2b14a3f471115d835d51b784dadc69f87dd2a134d",
+          "size": 5662,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -219,19 +219,19 @@
         }
       }
     },
-    "bjorn.show-tags": {
-      "name": "Show Tags",
-      "description": "Display bot tags, server tags, and discriminators clearly.",
-      "author": "cynosphere",
-      "icon": "TagIcon",
+    "bjorn.link-alert-copy": {
+      "name": "Link Alert Copy",
+      "description": "Shows a Copy Link button in the \"Leaving Discord\" alert.",
+      "author": "Palm",
+      "icon": "LinkIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.show-tags@1.0.0.zip",
-          "sha256": "39d29e82c4dec07fc4b6d667b5a6bd12f0210e9b3e0e8146f83bea0cade9ac9e",
-          "size": 601,
+          "url": "https://bjornon.top/plugins/pool/bjorn.link-alert-copy@1.0.0.zip",
+          "sha256": "5e1469cc0e262aa82f29153935d539140cb8f9ae78b7204cf12dcde384e49468",
+          "size": 934,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -243,19 +243,19 @@
         }
       }
     },
-    "bjorn.silent-leave": {
-      "name": "Silent Leave",
-      "description": "Leave servers quietly without sending standard leave triggers.",
-      "author": "il1ll",
-      "icon": "DoorExitIcon",
+    "bjorn.show-timeout-duration": {
+      "name": "Show Timeout Duration",
+      "description": "Show remaining timeout duration above usernames in chat.",
+      "author": "Palm",
+      "icon": "ClockWarningIcon",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.silent-leave@1.0.0.zip",
-          "sha256": "cc5d08da330a8f953e346e9a74397d58d6cbf5e0af2a7757599cfb9a8f2870ef",
-          "size": 606,
+          "url": "https://bjornon.top/plugins/pool/bjorn.show-timeout-duration@1.0.0.zip",
+          "sha256": "071e8abe561874fea3ed683e4e5a7bf3e4fac2bc5fa032e99c218d6bb0e03e6f",
+          "size": 21017,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
@@ -267,19 +267,19 @@
         }
       }
     },
-    "bjorn.valid-user": {
-      "name": "Valid User",
-      "description": "Verifies accounts and highlights missing or abnormal profile flags.",
-      "author": "fshinz",
-      "icon": "CheckmarkIcon",
+    "bjorn.no-idle": {
+      "name": "No Idle",
+      "description": "Prevent status from idling when Discord is in the background.",
+      "author": "k1ng_op",
+      "icon": "StatusIdle",
       "channels": {
         "latest": "1.0.0"
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/pool/bjorn.valid-user@1.0.0.zip",
-          "sha256": "745bc7ad119a91ea87ee090eaa03bc2c1a08fe0e01bdd251dda346b777be0b3c",
-          "size": 607,
+          "url": "https://bjornon.top/plugins/pool/bjorn.no-idle@1.0.0.zip",
+          "sha256": "db4e8f243c2dd9e1ca2f1676473364103b0b01edba5472d5b4eb3a43303be6c8",
+          "size": 639,
           "dependencies": {
             "valenced.api": {
               "version": ">=1 <2"
