@@ -1,1 +1,272 @@
+{
+  "format": 1,
+  "name": "BjornPlugs",
+  "description": "Bjorn's plugins for Valenced.",
+  "plugins": {
+    "bjorn.character-counter": {
+      "name": "Character Counter",
+      "description": "Displays real-time character count while typing messages.",
+      "author": "nexpid",
+      "icon": "ChatIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://revenge.nexpid.xyz/char-counter/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.copy-bio": {
+      "name": "Copy Bio",
+      "description": "Allows copying a user's bio directly from their profile.",
+      "author": "shipwr3ckd",
+      "icon": "CopyIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://shipwr3ckd.github.io/revengeplugin/CopyBios/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.custom-voice-messages": {
+      "name": "Custom Voice Messages",
+      "description": "Customize and send voice messages with enhanced options.",
+      "author": "shipwr3ckd",
+      "icon": "MicrophoneIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://shipwr3ckd.github.io/revengeplugin/customVoiceMessages/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.favorite-anything": {
+      "name": "Favorite Anything",
+      "description": "Allows favoriting emojis, stickers, and other media anywhere.",
+      "author": "theunrealzaka",
+      "icon": "HeartIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://theunrealzaka.github.io/FavouriteAnything/favouriteanything/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.gestures-plus": {
+      "name": "Gestures+",
+      "description": "Adds customizable navigation and swipe gestures.",
+      "author": "rksv",
+      "icon": "MobileIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://rksv.kmmiio99o.dev/GeasturesPlus/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.jump-to-top": {
+      "name": "Jump To Top",
+      "description": "Quickly scroll to the very top of a chat or channel.",
+      "author": "tralwdwd",
+      "icon": "ArrowUpIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://tralwdwd.github.io/plugins/JumpToTop/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.permission-viewer": {
+      "name": "Permission Viewer",
+      "description": "Inspect member permissions and role setups inside servers.",
+      "author": "lvwmwm",
+      "icon": "ShieldIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://lvwmwm.github.io/vendettian-plugins/permissionviewer/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.platform-indicators": {
+      "name": "Platform Indicators",
+      "description": "Shows icons for Desktop, Mobile, or Web on user avatars.",
+      "author": "martinz64",
+      "icon": "EyeIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://martinz64.github.io/vendetta-plugins/PlatformIndicators/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.rich-presence": {
+      "name": "Rich Presence",
+      "description": "Customizable Discord Rich Presence status manager.",
+      "author": "shipwr3ckd",
+      "icon": "GameIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://shipwr3ckd.github.io/revengeplugin/RichPresence/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.show-tags": {
+      "name": "Show Tags",
+      "description": "Display bot tags, server tags, and discriminators clearly.",
+      "author": "cynosphere",
+      "icon": "TagIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://vd-plugins.github.io/proxy/cynosphere.github.io/VendettaPlugins/ShowTag/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.silent-leave": {
+      "name": "Silent Leave",
+      "description": "Leave servers quietly without sending standard leave triggers.",
+      "author": "il1ll",
+      "icon": "DoorExitIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://il1ll.github.io/RevengePlugins/SilentLeave/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "bjorn.valid-user": {
+      "name": "Valid User",
+      "description": "Verifies accounts and highlights missing or abnormal profile flags.",
+      "author": "fshinz",
+      "icon": "CheckmarkIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://fshinz.github.io/Revenge-Plugins/ValidUser/",
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
