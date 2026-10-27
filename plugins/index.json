@@ -13,8 +13,8 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://revenge.nexpid.xyz/char-counter/",
-          "sha256": "4c8c7f99ff9d61d9a243c3f81e36cb077d70cfd0ec9c8da1b6062f831b0de23d",
+          "url": "https://revenge.nexpid.xyz/char-counter/index.js",
+          "sha256": "3e9b1bbffbc571b7020d0f507b93a207ee7d53b49bc5283ffec34d8fa440a775",
           "size": 2838,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
@@ -33,9 +33,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://shipwr3ckd.github.io/revengeplugin/CopyBios/",
-          "sha256": "5863c339794e2a14e9da40d7e671fc0f0bcf0032aa2898dbdb33c6ceeb0d19f0",
-          "size": 1720,
+          "url": "https://shipwr3ckd.github.io/revengeplugin/CopyBios/index.js",
+          "sha256": "3c85a2ceeb1cfd93aa5bf125c1157f4955b9dfd10123c8a9ba25c6be247b9381",
+          "size": 1744,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -53,9 +53,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://shipwr3ckd.github.io/revengeplugin/customVoiceMessages/",
-          "sha256": "a3b0fa48f86cc93ceb52c0de971ef2e8b2bf3ce3d077b949b2c3eeec94a11be0",
-          "size": 2410,
+          "url": "https://shipwr3ckd.github.io/revengeplugin/customVoiceMessages/index.js",
+          "sha256": "0fdb57d7210e7ee6b4e077bfdf395a1a1154cce058a94ee2e132c324bf857aa1",
+          "size": 2420,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -73,9 +73,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://theunrealzaka.github.io/FavouriteAnything/favouriteanything/",
-          "sha256": "d4e28c7ef3914a38753ec119a08e178122340576ee35a3a2908f4ee2d1a337ab",
-          "size": 3150,
+          "url": "https://theunrealzaka.github.io/FavouriteAnything/favouriteanything/index.js",
+          "sha256": "f62306fbcfa2c46faef58782a6ebdc88ea824f1c9ce1129fca03bb9774ca7412",
+          "size": 3180,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -93,9 +93,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://rksv.kmmiio99o.dev/GeasturesPlus/",
-          "sha256": "44ea78ba3b5d21a22020e6a8ff7d3e23d778d91b489be982361accd50367f082",
-          "size": 4200,
+          "url": "https://rksv.kmmiio99o.dev/GeasturesPlus/index.js",
+          "sha256": "b182cb8a658a514800366a70eeea62391ce4f52fa4fbcad6e72c01991a0c4f82",
+          "size": 4215,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -113,9 +113,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://tralwdwd.github.io/plugins/JumpToTop/",
-          "sha256": "91a8775f0a1c1d0d21a37c44e05b5500e28f11ba6fdf457b0ee56dcbff8903e1",
-          "size": 1890,
+          "url": "https://tralwdwd.github.io/plugins/JumpToTop/index.js",
+          "sha256": "6be30bfa2487e8574c861e6878b665fa1a43a05537ef6d62a6e9bb2a8c3d9711",
+          "size": 1912,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -133,9 +133,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://lvwmwm.github.io/vendettian-plugins/permissionviewer/",
-          "sha256": "7c01b1b0f5de79b00e62a71bf64c91b5c65f97371192e4abdf34efcb4cfa2281",
-          "size": 5120,
+          "url": "https://lvwmwm.github.io/vendettian-plugins/permissionviewer/index.js",
+          "sha256": "ae85b3bc7e0d37e6daef32098d61cc5fa4031d25b169ea23f05cefb7ef691230",
+          "size": 5150,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -153,9 +153,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://martinz64.github.io/vendetta-plugins/PlatformIndicators/",
-          "sha256": "38beee5a2caee35b0268dc76395e54d318353aaec9ef74f4b235e165fa44b361",
-          "size": 6340,
+          "url": "https://martinz64.github.io/vendetta-plugins/PlatformIndicators/index.js",
+          "sha256": "3cb1f088194487b9cc0f0e2195f00e9d1bf7e682ca7aa048ebbc9075ce8122a1",
+          "size": 6380,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -173,9 +173,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://shipwr3ckd.github.io/revengeplugin/RichPresence/",
-          "sha256": "153fae02cb8593a207fa02e96ca7d93ff55883ea57d9b54ce0521e15cf36d299",
-          "size": 8920,
+          "url": "https://shipwr3ckd.github.io/revengeplugin/RichPresence/index.js",
+          "sha256": "78453ac872db2f1caae5d2ee5642a4199cbe7d057a6e11b33947472098bc195e",
+          "size": 8950,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -193,9 +193,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://vd-plugins.github.io/proxy/cynosphere.github.io/VendettaPlugins/ShowTag/",
-          "sha256": "5bb2879a944fc6c4e0bfa5c79e6024ef931cb7f10b7ee2e132c3f8757ce05ca3",
-          "size": 3400,
+          "url": "https://vd-plugins.github.io/proxy/cynosphere.github.io/VendettaPlugins/ShowTag/index.js",
+          "sha256": "098d7fe604e76a6b57d092dcaae833bf029e61c56ab41bf9c104278ea822f719",
+          "size": 3440,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -213,9 +213,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://il1ll.github.io/RevengePlugins/SilentLeave/",
-          "sha256": "f5a1bb402cc607f2df98c41ecbfa5e016f461b20fbe54fca649a263fa7b12078",
-          "size": 1950,
+          "url": "https://il1ll.github.io/RevengePlugins/SilentLeave/index.js",
+          "sha256": "5bc839aa92f1556a310bb21896e06fc4b8c715984ba16ec8813a07675f6399c0",
+          "size": 1975,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -233,9 +233,9 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://fshinz.github.io/Revenge-Plugins/ValidUser/",
-          "sha256": "71a9eeea538cb8c962b14421b4f4c28f63544ec12e52b2175c5ea70d30ef95f9",
-          "size": 2230,
+          "url": "https://fshinz.github.io/Revenge-Plugins/ValidUser/index.js",
+          "sha256": "c86a2418e957bf89d53b47c01ee2289b4317f22616bca954e763b652ca671c82",
+          "size": 2260,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
