@@ -1,9 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const archiver = require('archiver');
+const { execSync } = require('child_process');
 
 const poolDir = path.join(__dirname, 'plugins', 'pool');
+const tempDir = path.join(__dirname, 'temp_build');
+
 if (!fs.existsSync(poolDir)) {
   fs.mkdirSync(poolDir, { recursive: true });
 }
@@ -24,49 +26,55 @@ const pluginsList = [
 ];
 
 function createZip(plugin) {
-  return new Promise((resolve, reject) => {
-    const zipName = `${plugin.id}@1.0.0.zip`;
-    const zipPath = path.join(poolDir, zipName);
-    const output = fs.createWriteStream(zipPath);
-    const archive = archiver('zip', { zlib: { level: 9 } });
+  const zipName = `${plugin.id}@1.0.0.zip`;
+  const zipPath = path.join(poolDir, zipName);
+  const pluginBuildDir = path.join(tempDir, plugin.id);
 
-    output.on('close', () => {
-      const data = fs.readFileSync(zipPath);
-      const sha256 = crypto.createHash('sha256').update(data).digest('hex');
-      resolve({ size: data.length, sha256, zipName });
-    });
+  if (fs.existsSync(pluginBuildDir)) {
+    fs.rmSync(pluginBuildDir, { recursive: true, force: true });
+  }
+  fs.mkdirSync(pluginBuildDir, { recursive: true });
 
-    archive.on('error', err => reject(err));
-    archive.pipe(output);
-
-    const innerManifest = {
-      format: 1,
-      id: plugin.id,
-      name: plugin.name,
-      description: plugin.desc,
-      author: plugin.author,
-      version: '1.0.0',
-      main: 'index.js',
-      dependencies: {
-        'valenced.api': { version: '>=1 <2' },
-        'discord': { version: '*' }
-      }
-    };
-
-    archive.append(JSON.stringify(innerManifest, null, 2), { name: 'manifest.json' });
-
-    const srcFile = path.join(__dirname, 'plugins', 'files', plugin.file);
-    if (fs.existsSync(srcFile)) {
-      archive.file(srcFile, { name: 'index.js' });
-    } else {
-      archive.append('export default { onLoad(){}, onUnload(){} };', { name: 'index.js' });
+  const innerManifest = {
+    format: 1,
+    id: plugin.id,
+    name: plugin.name,
+    description: plugin.desc,
+    author: plugin.author,
+    version: '1.0.0',
+    main: 'index.js',
+    dependencies: {
+      'valenced.api': { version: '>=1 <2' },
+      'discord': { version: '*' }
     }
+  };
 
-    archive.finalize();
-  });
+  fs.writeFileSync(path.join(pluginBuildDir, 'manifest.json'), JSON.stringify(innerManifest, null, 2));
+
+  const srcFile = path.join(__dirname, 'plugins', 'files', plugin.file);
+  if (fs.existsSync(srcFile)) {
+    fs.copyFileSync(srcFile, path.join(pluginBuildDir, 'index.js'));
+  } else {
+    fs.writeFileSync(path.join(pluginBuildDir, 'index.js'), 'export default { onLoad(){}, onUnload(){} };');
+  }
+
+  if (fs.existsSync(zipPath)) {
+    fs.unlinkSync(zipPath);
+  }
+
+  execSync(`cd "${pluginBuildDir}" && zip -r -9 "${zipPath}" ./*`);
+
+  const fileBuffer = fs.readFileSync(zipPath);
+  const sha256 = crypto.createHash('sha256').update(fileBuffer).digest('hex');
+  return { size: fileBuffer.length, sha256, zipName };
 }
 
-async function main() {
+function main() {
+  if (fs.existsSync(tempDir)) {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
+  fs.mkdirSync(tempDir, { recursive: true });
+
   const manifest = {
     format: 1,
     name: 'BjornPlugs',
@@ -75,7 +83,7 @@ async function main() {
   };
 
   for (const p of pluginsList) {
-    const { size, sha256, zipName } = await createZip(p);
+    const { size, sha256, zipName } = createZip(p);
     manifest.plugins[p.id] = {
       name: p.name,
       description: p.desc,
@@ -96,11 +104,9 @@ async function main() {
     };
   }
 
+  fs.rmSync(tempDir, { recursive: true, force: true });
   fs.writeFileSync(path.join(__dirname, 'plugins', 'index.json'), JSON.stringify(manifest, null, 2));
-  console.log('Successfully generated all 12 plugin zips and updated index.json');
+  console.log('Successfully packaged all 12 zips and updated index.json');
 }
 
-main().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+main();
