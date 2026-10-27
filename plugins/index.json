@@ -14,8 +14,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/charactercounter.js",
-          "sha256": "3cbce6368d7e974e40e6cbbfe39226d70bcbeff2c700cb83a4fb45041a941f7e",
-          "size": 139,
+          "sha256": "4b68426ecfa7a26f04c6ca9523e1ca030d1d6a9712a20a67243c4c9e47cf1c5d",
+          "size": 140,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -34,8 +34,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/copybio.js",
-          "sha256": "42dbefca39e3146461a7a0f7df262ce466c4062e7ff2b3633d7d74f2662c45e5",
-          "size": 125,
+          "sha256": "fc14421aaae3dc54c0032e3a76e10f36f663ea47c947ff17fe68eb1e88863f82",
+          "size": 129,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -54,8 +54,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/customvoicemessages.js",
-          "sha256": "f5f58c7304192534571e411f59da13a30c5e317bbbf11cbcf3f5a1134e7f33d0",
-          "size": 153,
+          "sha256": "787c9fe707926b48450c2ceec90a1f9a12c0199d7a22bb075ec9c4f1c93a0ca2",
+          "size": 154,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -74,8 +74,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/favoriteanything.js",
-          "sha256": "7cf73cfb862fa7dcfb2bb425c2763dbb4d0eb318f77ceee8f9b97b0a80ca7b64",
-          "size": 147,
+          "sha256": "9b1ca4db1d99fb3ba2df0c20ce5cb2dfa7e44ca6d50ff6cbbfb5757ca5fe9b0d",
+          "size": 148,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -94,8 +94,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/gesturesplus.js",
-          "sha256": "aa94db2ee483ef3fe9c68f7d983c26027c006b539a2f7a0b5a3eb84e3a47321e",
-          "size": 133,
+          "sha256": "252277d33b49ec96979927ef05c487f3944ebff77b25055b801a61c7e997f7fa",
+          "size": 134,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -114,8 +114,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/jumptotop.js",
-          "sha256": "c8ebdd927b59cf9cf1e0500bf824c084f7bbd8f1d8c1c463ef0fe76d05f2fae7",
-          "size": 131,
+          "sha256": "098e9b6264dce4c7ec07c77c66c72eef014a68e82efecab15ca0a1c6a254c7d0",
+          "size": 132,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -134,8 +134,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/permissionviewer.js",
-          "sha256": "4ce0e8dd792a76f2f9c3ff411a58c0ffec5ae0315c10486c9d05e26ecf1309f5",
-          "size": 149,
+          "sha256": "57b3bf937a0ce73aa9c9535aaeeec353ff1c8e192f15594b29bb80dc3e3a9dc6",
+          "size": 150,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -154,8 +154,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/platformindicators.js",
-          "sha256": "fa6b0e8b15d658b4ec2619ca2f0cb93a73c9fefee40dbeea83d47f9f7dc78d06",
-          "size": 155,
+          "sha256": "0a688b5efb867c2cead26c48f21e5e01eb946fdfd91244e837fcf8325a7a58a6",
+          "size": 156,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -174,8 +174,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/richpresence.js",
-          "sha256": "b18b4dd4fbf8a19d27ffc7ee330ec515b16fb8e4b86c8fce4d1db25d6255eb2b",
-          "size": 141,
+          "sha256": "b0f74ef9a584347717d54c418bc0a2b0e6e76cf2fe4566c7b3e0c031fc0f8fa2",
+          "size": 142,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -194,8 +194,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/showtags.js",
-          "sha256": "7a354bb42614b7e80a06c59b20bfa51c88bfd7f79ff100dceee389e728639556",
-          "size": 133,
+          "sha256": "9b9598286f772e258ce2ca3b43db7ae9477e801bb6fe99ff5a6438a3ba4313fa",
+          "size": 134,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -214,8 +214,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/silentleave.js",
-          "sha256": "3df88f344cb89da1807f7802a2ea7b4e8700a40f85ce30cff3bc494dc5cba799",
-          "size": 135,
+          "sha256": "2ce4dc916cefc0725efc3548b6c4331441ea636a00da8169b18361b170be1fa4",
+          "size": 136,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
@@ -234,8 +234,8 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/files/validuser.js",
-          "sha256": "c869ddfbc7520eec95c25e8cf6baec9036c0a0c4f6916fa5bca7a65917454f3b",
-          "size": 133,
+          "sha256": "e30e63fa68424a544c79524ba3ff8ec19be6a6ceb1dca50a964096052f5581c8",
+          "size": 134,
           "dependencies": {
             "valenced.api": { "version": ">=1 <2" },
             "discord": { "version": "*" }
