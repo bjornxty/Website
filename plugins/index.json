@@ -14,7 +14,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.character-counter@1.0.0.zip",
-          "sha256": "4167e3873adf26f477df4c34ade79354c11b80f3e1c1ea9881d3189ea9229227",
+          "sha256": "16e6c1dc3c7e78edd814cb288d0bd6e51d2657c46a5916fbe4829ea36cdbc499",
           "size": 608,
           "dependencies": {
             "valenced.api": {
@@ -38,7 +38,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.copy-bio@1.0.0.zip",
-          "sha256": "dcf2b30d9683ead6ad2a6a37005fc7e3af5b4880006d4d8a9317fa7b94092b02",
+          "sha256": "ae280f504f0536340ba6c64ff667ccb6b54256ee53a522588a320a08f56f44c4",
           "size": 603,
           "dependencies": {
             "valenced.api": {
@@ -62,7 +62,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.custom-voice-messages@1.0.0.zip",
-          "sha256": "c2fbc9dcf1d5291d9eb5b70cea479c1dd6ad43053f4d73978ef5d827b5ad8fdf",
+          "sha256": "63c5b6fb81385fd190b73a89ed5bea4c78d010193532967f828c32dd3086cfd3",
           "size": 618,
           "dependencies": {
             "valenced.api": {
@@ -86,7 +86,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.favorite-anything@1.0.0.zip",
-          "sha256": "983ae8147a76f4ba2660f5a1581a3a6a8ef52e263617ee5692e86be66a540968",
+          "sha256": "3422b77637c2902ab3144a89f9f74af51f3b3cb8d8c82994332f9e5c00951a6a",
           "size": 620,
           "dependencies": {
             "valenced.api": {
@@ -110,7 +110,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.gestures-plus@1.0.0.zip",
-          "sha256": "256f19210694998b7e21219ed9c7dfa26143f7a628a03a64c2e9e0f746659361",
+          "sha256": "5271f22f40831dfd35559d5530a1b9e9334fbc53af2db2a82a638f3bc6e95a71",
           "size": 593,
           "dependencies": {
             "valenced.api": {
@@ -134,7 +134,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.jump-to-top@1.0.0.zip",
-          "sha256": "4508961fc300bd9b82d222956c6fae7bf7a87c7cd5134fc73f4e0378cba9867a",
+          "sha256": "9be14c7c6bc382bb4b17a5bb4b617c2afaa69bbed61ebb2b0ec544e2ab98f099",
           "size": 603,
           "dependencies": {
             "valenced.api": {
@@ -158,7 +158,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.permission-viewer@1.0.0.zip",
-          "sha256": "1bd342f7e29fb0bc105653b1445c9a405f29dfa0b14f5fcedd2958a99333f2a5",
+          "sha256": "3438285ed61e7ca70fb895e0373c4733dca18c32755ed078f30638ebb6f2959b",
           "size": 606,
           "dependencies": {
             "valenced.api": {
@@ -182,7 +182,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.platform-indicators@1.0.0.zip",
-          "sha256": "91c687491414844895e551cc01625d19bd9a7c540236de6960037e8cf7f4b7eb",
+          "sha256": "dca6f7d5a303380d64beb5d0f9b939ffa76d8d2244cb54be2b11914025012ee9",
           "size": 625,
           "dependencies": {
             "valenced.api": {
@@ -206,7 +206,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.rich-presence@1.0.0.zip",
-          "sha256": "00a0596773638f9f2abbbaeabc18113eb45f2110dc9ed8d40b26f5cca4fe8079",
+          "sha256": "61a2c95fae2d85d93e64e08882807b3a6671e68b446b5ba31a3b73be18bf098d",
           "size": 603,
           "dependencies": {
             "valenced.api": {
@@ -230,7 +230,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.show-tags@1.0.0.zip",
-          "sha256": "ad681200bdf78cb34a8936c4ac6dc3a15ee389049984d51a03fcf07e5e9c6b18",
+          "sha256": "39d29e82c4dec07fc4b6d667b5a6bd12f0210e9b3e0e8146f83bea0cade9ac9e",
           "size": 601,
           "dependencies": {
             "valenced.api": {
@@ -254,7 +254,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.silent-leave@1.0.0.zip",
-          "sha256": "7348979dc83ae3f616bf18f1e20cae9b447e0bdaa8b4d26cfdae974c0a95e69f",
+          "sha256": "cc5d08da330a8f953e346e9a74397d58d6cbf5e0af2a7757599cfb9a8f2870ef",
           "size": 606,
           "dependencies": {
             "valenced.api": {
@@ -278,7 +278,7 @@
       "versions": {
         "1.0.0": {
           "url": "https://bjornon.top/plugins/pool/bjorn.valid-user@1.0.0.zip",
-          "sha256": "c0014cee79dfa1ae74f8625aa5d155474942e291cc1430c7bd4d061c6ef48ac6",
+          "sha256": "745bc7ad119a91ea87ee090eaa03bc2c1a08fe0e01bdd251dda346b777be0b3c",
           "size": 607,
           "dependencies": {
             "valenced.api": {
