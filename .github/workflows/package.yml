@@ -5,6 +5,10 @@ on:
   push:
     paths:
       - 'build.js'
+      - 'plugins/files/**'
+  schedule:
+    # Ekzekutohet automatikisht çdo ditë në orën 00:00 UTC
+    - cron: '0 0 * * *'
 
 jobs:
   build:
