@@ -13,12 +13,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/charactercounter.js",
-          "sha256": "4b68426ecfa7a26f04c6ca9523e1ca030d1d6a9712a20a67243c4c9e47cf1c5d",
-          "size": 140,
+          "url": "https://bjornon.top/plugins/pool/bjorn.character-counter@1.0.0.zip",
+          "sha256": "4167e3873adf26f477df4c34ade79354c11b80f3e1c1ea9881d3189ea9229227",
+          "size": 608,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -33,12 +37,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/copybio.js",
-          "sha256": "fc14421aaae3dc54c0032e3a76e10f36f663ea47c947ff17fe68eb1e88863f82",
-          "size": 129,
+          "url": "https://bjornon.top/plugins/pool/bjorn.copy-bio@1.0.0.zip",
+          "sha256": "dcf2b30d9683ead6ad2a6a37005fc7e3af5b4880006d4d8a9317fa7b94092b02",
+          "size": 603,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -53,12 +61,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/customvoicemessages.js",
-          "sha256": "787c9fe707926b48450c2ceec90a1f9a12c0199d7a22bb075ec9c4f1c93a0ca2",
-          "size": 154,
+          "url": "https://bjornon.top/plugins/pool/bjorn.custom-voice-messages@1.0.0.zip",
+          "sha256": "c2fbc9dcf1d5291d9eb5b70cea479c1dd6ad43053f4d73978ef5d827b5ad8fdf",
+          "size": 618,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -73,12 +85,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/favoriteanything.js",
-          "sha256": "9b1ca4db1d99fb3ba2df0c20ce5cb2dfa7e44ca6d50ff6cbbfb5757ca5fe9b0d",
-          "size": 148,
+          "url": "https://bjornon.top/plugins/pool/bjorn.favorite-anything@1.0.0.zip",
+          "sha256": "983ae8147a76f4ba2660f5a1581a3a6a8ef52e263617ee5692e86be66a540968",
+          "size": 620,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -93,12 +109,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/gesturesplus.js",
-          "sha256": "252277d33b49ec96979927ef05c487f3944ebff77b25055b801a61c7e997f7fa",
-          "size": 134,
+          "url": "https://bjornon.top/plugins/pool/bjorn.gestures-plus@1.0.0.zip",
+          "sha256": "256f19210694998b7e21219ed9c7dfa26143f7a628a03a64c2e9e0f746659361",
+          "size": 593,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -113,12 +133,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/jumptotop.js",
-          "sha256": "098e9b6264dce4c7ec07c77c66c72eef014a68e82efecab15ca0a1c6a254c7d0",
-          "size": 132,
+          "url": "https://bjornon.top/plugins/pool/bjorn.jump-to-top@1.0.0.zip",
+          "sha256": "4508961fc300bd9b82d222956c6fae7bf7a87c7cd5134fc73f4e0378cba9867a",
+          "size": 603,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -133,12 +157,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/permissionviewer.js",
-          "sha256": "57b3bf937a0ce73aa9c9535aaeeec353ff1c8e192f15594b29bb80dc3e3a9dc6",
-          "size": 150,
+          "url": "https://bjornon.top/plugins/pool/bjorn.permission-viewer@1.0.0.zip",
+          "sha256": "1bd342f7e29fb0bc105653b1445c9a405f29dfa0b14f5fcedd2958a99333f2a5",
+          "size": 606,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -153,12 +181,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/platformindicators.js",
-          "sha256": "0a688b5efb867c2cead26c48f21e5e01eb946fdfd91244e837fcf8325a7a58a6",
-          "size": 156,
+          "url": "https://bjornon.top/plugins/pool/bjorn.platform-indicators@1.0.0.zip",
+          "sha256": "91c687491414844895e551cc01625d19bd9a7c540236de6960037e8cf7f4b7eb",
+          "size": 625,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -173,12 +205,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/richpresence.js",
-          "sha256": "b0f74ef9a584347717d54c418bc0a2b0e6e76cf2fe4566c7b3e0c031fc0f8fa2",
-          "size": 142,
+          "url": "https://bjornon.top/plugins/pool/bjorn.rich-presence@1.0.0.zip",
+          "sha256": "00a0596773638f9f2abbbaeabc18113eb45f2110dc9ed8d40b26f5cca4fe8079",
+          "size": 603,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -193,12 +229,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/showtags.js",
-          "sha256": "9b9598286f772e258ce2ca3b43db7ae9477e801bb6fe99ff5a6438a3ba4313fa",
-          "size": 134,
+          "url": "https://bjornon.top/plugins/pool/bjorn.show-tags@1.0.0.zip",
+          "sha256": "ad681200bdf78cb34a8936c4ac6dc3a15ee389049984d51a03fcf07e5e9c6b18",
+          "size": 601,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -213,12 +253,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/silentleave.js",
-          "sha256": "2ce4dc916cefc0725efc3548b6c4331441ea636a00da8169b18361b170be1fa4",
-          "size": 136,
+          "url": "https://bjornon.top/plugins/pool/bjorn.silent-leave@1.0.0.zip",
+          "sha256": "7348979dc83ae3f616bf18f1e20cae9b447e0bdaa8b4d26cfdae974c0a95e69f",
+          "size": 606,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
@@ -233,12 +277,16 @@
       },
       "versions": {
         "1.0.0": {
-          "url": "https://bjornon.top/plugins/files/validuser.js",
-          "sha256": "e30e63fa68424a544c79524ba3ff8ec19be6a6ceb1dca50a964096052f5581c8",
-          "size": 134,
+          "url": "https://bjornon.top/plugins/pool/bjorn.valid-user@1.0.0.zip",
+          "sha256": "c0014cee79dfa1ae74f8625aa5d155474942e291cc1430c7bd4d061c6ef48ac6",
+          "size": 607,
           "dependencies": {
-            "valenced.api": { "version": ">=1 <2" },
-            "discord": { "version": "*" }
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
           }
         }
       }
