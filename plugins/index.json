@@ -14,13 +14,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://revenge.nexpid.xyz/char-counter/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -36,13 +34,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://shipwr3ckd.github.io/revengeplugin/CopyBios/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -58,13 +54,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://shipwr3ckd.github.io/revengeplugin/customVoiceMessages/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -80,13 +74,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://theunrealzaka.github.io/FavouriteAnything/favouriteanything/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -102,13 +94,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://rksv.kmmiio99o.dev/GeasturesPlus/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -124,13 +114,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://tralwdwd.github.io/plugins/JumpToTop/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -146,13 +134,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://lvwmwm.github.io/vendettian-plugins/permissionviewer/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -168,13 +154,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://martinz64.github.io/vendetta-plugins/PlatformIndicators/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -190,13 +174,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://shipwr3ckd.github.io/revengeplugin/RichPresence/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -212,13 +194,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://vd-plugins.github.io/proxy/cynosphere.github.io/VendettaPlugins/ShowTag/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -234,13 +214,11 @@
       "versions": {
         "1.0.0": {
           "url": "https://il1ll.github.io/RevengePlugins/SilentLeave/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
@@ -256,17 +234,14 @@
       "versions": {
         "1.0.0": {
           "url": "https://fshinz.github.io/Revenge-Plugins/ValidUser/",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 1024,
           "dependencies": {
-            "valenced.api": {
-              "version": ">=1 <2"
-            },
-            "discord": {
-              "version": "*"
-            }
+            "valenced.api": { "version": ">=1 <2" },
+            "discord": { "version": "*" }
           }
         }
       }
     }
   }
 }
-
